@@ -31,47 +31,7 @@
         スタンプラリーカード
       </h1>
 
-      <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
-      <script>
-        liff
-          .init({
-            liffId: "2007154146-Y5jGo0G3",
-          })
-          .then(async () => {
-            if (!liff.isLoggedIn()) {
-              liff.login();
-            } else {
-              try {
-                const profile = await liff.getProfile();
-                const userId = profile.userId;
-      
-                // 各フォームにユーザーIDを追加
-                ["userForm1", "userForm2", "userForm3","userForm4"].forEach((formId) => {
-                  const form = document.getElementById(formId);
-                  if (form) {
-                    const userIdField = document.createElement("input");
-                    userIdField.type = "hidden";
-                    userIdField.name = "userId";
-                    userIdField.value = userId;
-                    form.appendChild(userIdField);
-                  }
-                });
-      
-                // ボタンのテキストを変更
-                document.querySelector(".button1").textContent = "ユーザー登録";
-                document.querySelector(".button2").textContent =
-                  "スタンプラリーカード";
-                document.querySelector(".button3").textContent = "スタンプ獲得";
-                document.querySelector(".button4").textContent = "お問合せ";
-              } catch (err) {
-                console.log("プロフィール取得エラー: ", err);
-              }
-            }
-          })
-          .catch((err) => {
-            console.log("LIFF初期化エラー:", err);
-          });
-      </script>
+     
 
 <div class="tabs">
   <input
@@ -102,15 +62,15 @@
       <p class="c-txtsp">
         <form
         id="userForm3"
-        action="https://script.google.com/macros/s/AKfycbybTNYN21_S6St7VRoVlC_41t-n-yJRCevatUZSQn8O9a7rgrz03ZyF0MI7wSiYYlGi/exec"
+        action="https://script.google.com/macros/s/AKfycbyDlg9VdkhsnGSW-tdHIfnUTYakpdi113xRyJbt0WBFV4F0zOqzMLkSzxkK97EUltnt/exec"
         method="post"
         >
        <img class="alert" src="https://i.ibb.co/NnV8KMtC/2025-04-04-0-43-24.png" alt="2025-04-04-0-43-24" border="0">
         <h2 class="title">QRコードの読み取り</h2>
-        <h2>①QRコードを読み込む<br>②スポットIDをコピー<br>
-        <a href="https://liff.line.me/2007108080-jR8JqOgX" target="_self" class="qrUrl">ここをクリック!!</a></h2>
+        <h3>①QRコードを読み込む<br>②スポットIDをコピー<br></h3>
+        <h2 class=qrbutton><a href="https://liff.line.me/2007108080-jR8JqOgX" target="_self" class="qrUrl">ここをタップ!!</a></h2>
 
-        <h2>③スポットIDを貼り付ける</h2>
+        <h3>③スポットIDを貼り付ける</h3>
         <label for="spotId"
         >
         <span class="required">
@@ -133,7 +93,7 @@
           <h3>現在の獲得スタンプ数を確認できます！</h3>
           <form
               id="userForm2"
-              action="https://script.google.com/macros/s/AKfycbzJuiTsdplcphyz-_MElRafKzaAO-KQYP3PEE6HM_BhPBaQE58LTqVjlY6719VDg8Kpsw/exec"
+              action="https://script.google.com/macros/s/AKfycbwF4hNHfRvftKQQiFDHFdBPpyljEfGAUhBfb7M628ThK-Bvrh6teACX8-N4shETHSewbg/exec"
               method="post"
               >
            <!-- ユーザーIDは動的に追加されます -->
@@ -150,7 +110,7 @@
         <h2 class="title">ユーザー登録</h2>
                         <form
                               id="userForm1"
-                              action="https://script.google.com/macros/s/AKfycbwUvff-9Zn_PiRYlMqCb3pHDTaw00gyOBOjYX-9ANnjki82w0RcEmgKLrkoDrMeiCxF8w/exec"
+                              action="https://script.google.com/macros/s/AKfycbyAh467BpIjT1QBpa_hu14HltkmmgDTB3UCujMDvkkjIftLktZV3Zf8wfKoOUJg1N402g/exec"
                               method="post"
                               class="h-adr"
                         
@@ -506,11 +466,18 @@
       select {
         font-size: 100%;
       }
+
       .alert {
         border-style: double;
         border-color: red;
         width: 100%;
-      }
+}
+
+     .qrbutton {
+       border-style: double;
+        border-color: red;
+        display: inline-block;
+     }
       </style>
   </body>
 </html>
