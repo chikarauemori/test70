@@ -1,0 +1,414 @@
+
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ユーザー登録</title>
+     <script
+      src="https://kit.fontawesome.com/d0a601627a.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://yubinbango.github.io/yubinbango/yubinbango.js"
+      charset="UTF-8"
+    ></script>
+    <link
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+          <h1>
+        <img
+          src="https://i.ibb.co/Wv8X3LVh/1.png"
+          alt="IMG-5451"
+          width="100px"
+          height="100px"
+        />
+        クールシェア宝塚2025<br />
+        スタンプラリーカード
+      </h1>
+      <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+<script>
+  liff
+    .init({
+      liffId: "2007154146-Y5jGo0G3",
+    })
+    .then(async () => {
+      if (!liff.isLoggedIn()) {
+        liff.login();
+      } else {
+        try {
+          const profile = await liff.getProfile();
+          const userId = profile.userId;
+
+          // 各フォームにユーザーIDを追加
+          ["userForm1", "userForm2", "userForm3"].forEach((formId) => {
+            const form = document.getElementById(formId);
+            if (form) {
+              const userIdField = document.createElement("input");
+              userIdField.type = "hidden";
+              userIdField.name = "userId";
+              userIdField.value = userId;
+              form.appendChild(userIdField);
+            }
+          });
+
+          // ボタンのテキストを変更
+          document.querySelector(".button1").textContent = "ユーザー登録";
+          document.querySelector(".button2").textContent =
+            "スタンプラリーカード";
+          document.querySelector(".button3").textContent = "スタンプ獲得";
+        } catch (err) {
+          console.log("プロフィール取得エラー: ", err);
+        }
+      }
+    })
+    .catch((err) => {
+      console.log("LIFF初期化エラー:", err);
+    });
+</script>
+
+
+        <div class="tabs">
+            <input id="stamp" type="radio" name="tab_item"  checked>
+            <label class="tab_item" for="stamp">スタンプ獲得 </label>
+            <input id="mypage" type="radio" name="tab_item" >
+            <label class="tab_item" for="mypage">スタンプカード</label>
+            <input id="registration" type="radio" name="tab_item">
+            <label class="tab_item" for="registration">ユーザー登録</label>
+
+            <div class="tab_content" id="registration_content">
+                <div class="tab_content_description">
+                    <p class="c-txtsp">
+                        <h2 class="title">ユーザー登録</h2>
+                        <form
+                              id="userForm1"
+                              action="https://script.google.com/macros/s/AKfycbyCUp5JcAToqwyrZlCIvuLPIrms6M09QN8T6sABSs3VM1vcPykl_yZk4lnmCJbFnjtfQA/exec"
+                              method="post"
+                              class="h-adr"
+                        
+                            >
+                        <span class="p-country-name" style="display: none">Japan</span>
+                        <h3 class="question">①イベントで使用する参加名(ニックネーム)を入力してください</h3>
+                        
+                        <input type="text" name="name" id="name" />
+                        
+                        <h4>
+                          本名でなくて大丈夫です👌<br />
+                          お好きな名前でご参加ください！!
+                        </h4>
+                        
+                        <h3 class="question">②性別を教えてください</h3>
+                        <label><input type="radio" name="sex" value="men" />男性</label>
+                        <label><input type="radio" name="sex" value="women" />女性</label>
+                        <label><input type="radio" name="sex" value="other" />その他</label>
+                        
+                        <h3 class="question">③年齢を教えてください</h3>
+                        <label><input type="radio" name="age" value="0~19" />〜19歳</label>
+                        <label><input type="radio" name="age" value="20~29" />20歳代</label>
+                        <label><input type="radio" name="age" value="30~39" />30歳代</label>
+                        <label><input type="radio" name="age" value="40~49" />40歳代</label>
+                        <label><input type="radio" name="age" value="50~59" />50歳代</label>
+                        <label><input type="radio" name="age" value="60~" />60歳〜</label>
+                        
+                        <h3 class="question">④職業を教えてください</h3>
+                        <label><input type="radio" name="occupation" value="1" />小学生 </label>
+                        <label><input type="radio" name="occupation" value="2" />中学生 </label>
+                        <label><input type="radio" name="occupation" value="3" />高校生 </label>
+                        <label><input type="radio" name="occupation" value="4" />大学生 </label
+                        ><br />
+                        <label
+                          ><input type="radio" name="occupation" value="5" />経営者・役員
+                        </label>
+                        <label><input type="radio" name="occupation" value="6" />会社員 </label>
+                        <label><input type="radio" name="occupation" value="7" />公務員 </label>
+                        <label
+                          ><input
+                            type="radio"
+                            name="occupation"
+                            value="8"
+                          />自営業・フリーランス </label
+                        ><br />
+                        <label
+                          ><input type="radio" name="occupation" value="9" />契約社員・派遣社員
+                        </label>
+                        <label
+                          ><input
+                            type="radio"
+                            name="occupation"
+                            value="10"
+                          />パート・アルバイト </label
+                        ><br />
+                        <label
+                          ><input type="radio" name="occupation" value="11" />専業主婦(主夫)
+                        </label>
+                        <label
+                          ><input type="radio" name="occupation" value="12" />定年退職
+                        </label>
+                        <label><input type="radio" name="occupation" value="13" />無職 </label>
+                        <label><input type="radio" name="occupation" value="14" />その他</label
+                        ><br />
+                        <input type="hidden" name="sexList" id="sexList" />
+                        <input type="hidden" name="ageList" id="ageList" />
+                        <input type="hidden" name="occupationList" id="occupationList" />
+                          
+                        <button class="button1" type="submit" value>ログインされていません</button> 
+                        </form>
+                    </p> 
+        
+                </div>
+
+            
+            </div>
+            <div class="tab_content" id="mypage_content">
+                <div class="tab_content_description">
+                    <p class="c-txtsp">
+                      <img class="attention" src="ユーザー登録.png">
+                        <h2 class="title">スタンプラリーカード</h2>
+                            <h3>現在の獲得スタンプ数を確認できます！</h3>
+                            <form
+                                id="userForm2"
+                                action="https://script.google.com/macros/s/AKfycbzJuiTsdplcphyz-_MElRafKzaAO-KQYP3PEE6HM_BhPBaQE58LTqVjlY6719VDg8Kpsw/exec"
+                                method="post"
+                                >
+                             <!-- ユーザーIDは動的に追加されます -->
+                             <button class="button2" type="submit">ログインされていません</button>
+                            </form>
+                    </p> 
+        
+                </div>
+
+            </div>
+            <div class="tab_content" id="stamp_content">
+                <div class="tab_content_description">
+                  <p class="c-txtsp">
+                        <form
+                        id="userForm3"
+                        action="https://script.google.com/macros/s/AKfycbybTNYN21_S6St7VRoVlC_41t-n-yJRCevatUZSQn8O9a7rgrz03ZyF0MI7wSiYYlGi/exec"
+                        method="post"
+                        >
+                        <img class="attention" src="ユーザー登録.png">
+                        <h2 class="title">QRコードの読み取り</h2>
+                        <h2>①QRコードを読み込む<br>②スポットIDをコピー<br>
+                        <a href="https://liff.line.me/2007108080-jR8JqOgX" target="_self" class="qrUrl">ここをクリック!!</a></h2>
+
+                        <h2>③スポットIDを貼り付ける</h2>
+                        <label for="spotId"
+                        >
+                        <span class="required">
+                        先ほどコピーした値を貼り付けてください！</span
+                        ></label
+                        ><br />
+                        <input type="text" name="spotId" id="spotId" required /><br />
+                        <!-- ユーザーIDは動的に追加されます -->
+                        <button class="button3" type="submit">ログインされていません</button>
+                        </form>
+                    </p> 
+            
+                </div>
+
+            </div>    
+        </div>
+
+        <style>
+            .title {
+              border-bottom-style: double;
+              border-color: blue;
+              display: inline-block;
+      
+            }
+            .tabs {
+                margin-top: 50px;
+                padding-bottom: 40px;
+                background-color: #fff;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                width: 100%;
+                margin: 0 auto;}
+         
+            .tab_item {
+                width: calc(100%/3);
+                height: 50px;
+                border-bottom: 3px solid #5ab4bd;
+                background-color: #d9d9d9;
+                line-height: 50px;
+                font-size: 16px;
+                text-align: center;
+                color: #565656;
+                display: block;
+                float: left;
+                text-align: center;
+                font-weight: bold;
+                transition: all 0.2s ease;
+                }
+            .tab_item:hover {
+                opacity: 0.75;
+                }
+
+            /*ラジオボタンを全て消す*/
+            input[name="tab_item"] {
+                display: none;
+                }
+
+            /*タブ切り替えの中身のスタイル*/
+            .tab_content {
+                display: none;
+                padding: 40px 40px 0;
+                clear: both;
+                overflow: hidden;
+                }
+
+
+            /*選択されているタブのコンテンツのみを表示*/
+            #registration:checked ~ #registration_content,
+            #mypage:checked ~ #mypage_content,
+            #stamp:checked ~ #stamp_content {
+                display: block;
+                }
+
+            /*選択されているタブのスタイルを変える*/
+            .tabs input:checked + .tab_item {
+                background-color: #5ab4bd;
+                color: #fff;
+            }
+            
+
+        </style>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      
+
+
+
+
+
+ 
+ <nav>
+    <ul class="menu">
+      <li>
+        <a href="https://chikarauemori.github.io/test57/" target="_self"
+          ><i class="fa-solid fa-house"></i><br /><span class="iconname"
+            >ホーム</span
+          ></a
+        >
+      </li>
+      <li>
+        <a href="https://chikarauemori.github.io/test62/" target="_self"
+          ><i class="fa-solid fa-location-dot"></i><br /><span class="iconname"
+            >マップ</span
+          ></a
+        >
+      </li>
+      <li>
+        <a
+          href="
+        https://liff.line.me/2007108080-jR8JqOgX" target="_self"
+          ><i class="fa-solid fa-location-pin"></i><br /><span class="iconname"
+            >スタンプ獲得</span
+          ></a
+        >
+      </li>
+      <li>
+        <a href="https://chikarauemori.github.io/test66/" target="_self"
+          ><i class="fa-solid fa-circle-user"></i><br /><span class="iconname"
+            >マイページ</span
+          ></a
+        >
+      </li>
+    </ul>
+  </nav>
+ 
+<style>
+      .menu {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        background: white;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 0;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .menu li {
+        display: inline-block;
+        text-align: center;
+      }
+
+      .menu a {
+        text-decoration: none;
+        color: black;
+      }
+
+      .menu a i {
+        font-size: 24px;
+      }
+
+      .menu a span {
+        display: block;
+        font-size: 12px; /* テキストサイズ */
+        margin-top: 5px;
+      }
+
+      @media (max-width: 768px) {
+        .menu {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .menu li {
+          padding: 5px;
+        }
+      }
+
+          h1 {
+        font-family: sans-serif;
+        display: flex;
+        align-items: center; /* 縦方向の中央揃え */
+        justify-content: center; /* 横方向の中央揃え */
+        text-align: center;
+        background: skyblue;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        font-size: 85%;
+      }
+
+      input {
+        font-size: 150%;
+        background: skyblue;
+        display: inline-block;
+      }
+
+      button {
+        font-size: 200%;
+        display: inline-block;
+      }
+      .information{
+        border-style: dotted;
+        display: inline-block;
+      }
+
+      .attention {
+        width: 100%;
+        border-style: double;
+        border-color: red;
+            }
+      .qrUrl {
+        color: red;
+      }
+      </style>
+  </body>
+</html>
