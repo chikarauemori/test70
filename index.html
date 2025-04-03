@@ -30,60 +30,126 @@
         クールシェア宝塚2025<br />
         スタンプラリーカード
       </h1>
+
       <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
-<script>
-  liff
-    .init({
-      liffId: "2007154146-Y5jGo0G3",
-    })
-    .then(async () => {
-      if (!liff.isLoggedIn()) {
-        liff.login();
-      } else {
-        try {
-          const profile = await liff.getProfile();
-          const userId = profile.userId;
-
-          // 各フォームにユーザーIDを追加
-          ["userForm1", "userForm2", "userForm3"].forEach((formId) => {
-            const form = document.getElementById(formId);
-            if (form) {
-              const userIdField = document.createElement("input");
-              userIdField.type = "hidden";
-              userIdField.name = "userId";
-              userIdField.value = userId;
-              form.appendChild(userIdField);
+      <script>
+        liff
+          .init({
+            liffId: "2007154146-Y5jGo0G3",
+          })
+          .then(async () => {
+            if (!liff.isLoggedIn()) {
+              liff.login();
+            } else {
+              try {
+                const profile = await liff.getProfile();
+                const userId = profile.userId;
+      
+                // 各フォームにユーザーIDを追加
+                ["userForm1", "userForm2", "userForm3","userForm4"].forEach((formId) => {
+                  const form = document.getElementById(formId);
+                  if (form) {
+                    const userIdField = document.createElement("input");
+                    userIdField.type = "hidden";
+                    userIdField.name = "userId";
+                    userIdField.value = userId;
+                    form.appendChild(userIdField);
+                  }
+                });
+      
+                // ボタンのテキストを変更
+                document.querySelector(".button1").textContent = "ユーザー登録";
+                document.querySelector(".button2").textContent =
+                  "スタンプラリーカード";
+                document.querySelector(".button3").textContent = "スタンプ獲得";
+                document.querySelector(".button4").textContent = "お問合せ";
+              } catch (err) {
+                console.log("プロフィール取得エラー: ", err);
+              }
             }
+          })
+          .catch((err) => {
+            console.log("LIFF初期化エラー:", err);
           });
+      </script>
 
-          // ボタンのテキストを変更
-          document.querySelector(".button1").textContent = "ユーザー登録";
-          document.querySelector(".button2").textContent =
-            "スタンプラリーカード";
-          document.querySelector(".button3").textContent = "スタンプ獲得";
-        } catch (err) {
-          console.log("プロフィール取得エラー: ", err);
-        }
-      }
-    })
-    .catch((err) => {
-      console.log("LIFF初期化エラー:", err);
-    });
-</script>
+<div class="tabs">
+  <input
+    id="stamp"
+    type="radio"
+    name="tab_item"
+    checked
+    aria-label="スタンプ獲得"
+  />
+  <label class="tab_item" for="stamp">スタンプ獲得</label>
 
+  <input id="mypage" type="radio" name="tab_item" aria-label="スタンプカード" />
+  <label class="tab_item" for="mypage">スタンプカード</label>
 
-        <div class="tabs">
-            <input id="stamp" type="radio" name="tab_item"  checked>
-            <label class="tab_item" for="stamp">スタンプ獲得 </label>
-            <input id="mypage" type="radio" name="tab_item" >
-            <label class="tab_item" for="mypage">スタンプカード</label>
-            <input id="registration" type="radio" name="tab_item">
-            <label class="tab_item" for="registration">ユーザー登録</label>
+  <input
+    id="registration"
+    type="radio"
+    name="tab_item"
+    aria-label="ユーザー登録"
+  />
+  <label class="tab_item" for="registration">ユーザー登録</label>
 
-            <div class="tab_content" id="registration_content">
-                <div class="tab_content_description">
-                    <p class="c-txtsp">
-                        <h2 class="title">ユーザー登録</h2>
+  <input id="inquiry" type="radio" name="tab_item" aria-label="お問合せ" />
+  <label class="tab_item" for="inquiry">お問合せ</label>
+
+  <div class="tab_content" id="stamp_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">
+        <form
+        id="userForm3"
+        action="https://script.google.com/macros/s/AKfycbybTNYN21_S6St7VRoVlC_41t-n-yJRCevatUZSQn8O9a7rgrz03ZyF0MI7wSiYYlGi/exec"
+        method="post"
+        >
+        <h2 class="attention">スタンプラリー初めての方<br>
+            初めにユーザー登録をしてください！！</h2>
+        <h2 class="title">QRコードの読み取り</h2>
+        <h2>①QRコードを読み込む<br>②スポットIDをコピー<br>
+        <a href="https://liff.line.me/2007108080-jR8JqOgX" target="_self" class="qrUrl">ここをクリック!!</a></h2>
+
+        <h2>③スポットIDを貼り付ける</h2>
+        <label for="spotId"
+        >
+        <span class="required">
+        先ほどコピーした値を貼り付けてください！</span
+        ></label
+        ><br />
+        <input type="text" name="spotId" id="spotId" required /><br />
+        <!-- ユーザーIDは動的に追加されます -->
+        <button class="button3" type="submit">ログインされていません</button>
+        </form>
+      </p>
+    </div>
+  </div>
+
+  <div class="tab_content" id="mypage_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">
+          <h2 class="attention">スタンプラリー初めての方<br>
+          初めにユーザー登録をしてください！！</h2>
+          <h2 class="title">スタンプラリーカード</h2>
+          <h3>現在の獲得スタンプ数を確認できます！</h3>
+          <form
+              id="userForm2"
+              action="https://script.google.com/macros/s/AKfycbzJuiTsdplcphyz-_MElRafKzaAO-KQYP3PEE6HM_BhPBaQE58LTqVjlY6719VDg8Kpsw/exec"
+              method="post"
+              >
+           <!-- ユーザーIDは動的に追加されます -->
+           <button class="button2" type="submit">ログインされていません</button>
+          </form>
+
+      </p>
+    </div>
+  </div>
+
+  <div class="tab_content" id="registration_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">
+        <h2 class="title">ユーザー登録</h2>
                         <form
                               id="userForm1"
                               action="https://script.google.com/macros/s/AKfycbyCUp5JcAToqwyrZlCIvuLPIrms6M09QN8T6sABSs3VM1vcPykl_yZk4lnmCJbFnjtfQA/exec"
@@ -157,128 +223,151 @@
                           
                         <button class="button1" type="submit" value>ログインされていません</button> 
                         </form>
-                    </p> 
+
+      </p>
+    </div>
+  </div>
+
+  <div class="tab_content" id="inquiry_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">
+        <h2 title>お問い合わせ</h2>
+        <h3>※お急ぎの場合、公式LINEアカウントにお問合せください</h3>
         
-                </div>
+        <h3>お問い合わせ内容をリストから選んでください</h3>   
+        <select>
+            <optgroup label=""></optgroup>
+            <option value=""></option>           
+            <optgroup label="全体">
+                <option value="1">遊び方がわからない</option>
+            </optgroup>
+            <optgroup label="LINE友達追加">
+                <option value="2">LINEで友達の追加方法がわからない</option>
+            </optgroup>
+            <optgroup label="ユーザー登録">
+                <option value="3">ユーザー登録方法がわからない</option>              
+                <option value="4">LINEで「認証」画面が出た</option>
+                <option value="5">「ログインされていません」</option>  
+                <option value="6">個人情報の取り扱いについて教えてほしい</option>
+                <option value="7">参加名は何に使うのか</option>
+
+            </optgroup>
+            <optgroup label="スポットQRコードの読み取り">
+                <option value="8">QRコードの読み取り方法がわからない</option>
+                <option value="9">「端末のカメラを起動できません」とメッセージが出た</option>
+                <option value="10">「LINEアプリ内で開いてください」とメッセージが出た</option>
+                <option value="11">「無効なQRコードです」とメッセージが出た</option>
+            </optgroup>
+
+            <optgroup label="スポットIDのコピー">
+              <option value="12">スポットIDのコピー方法がわからない</option>
+              <option value="13">スポットIDの貼り付け先がわからない</option>
+              <option value="14">スポットIDの貼り付け方がわからない</option>
+            </optgroup>
+
+            <optgroup label="スタンプ獲得フォーム">
+                <option value="15">「×スポットIDが異なります。フォームで入力し直してください！」とメッセージが出た</option>
+                <option value="16">「×登録されていません。ユーザー登録をしてください！」とメッセージが出た</option>
+                <option value="17">「×本日、このスポットのスタンプは既に獲得済みです。明日以降獲得できます！」とメッセージが出た</option>
+            </optgroup>
+
+            <optgroup label="スタンプカード">
+              <option value="18">「ユーザーが登録されていません」とメッセージが出た</option>
+              <option value="19">景品の当選はいつ？</option>
+              <option value="20">景品は何回応募できる？</option>                
+          </optgroup>
 
             
-            </div>
-            <div class="tab_content" id="mypage_content">
-                <div class="tab_content_description">
-                    <p class="c-txtsp">
-  
-                        <h2 class="attention">スタンプラリー初めての方<br>
-                            初めにユーザー登録をしてください！！</h2>
-                        <h2 class="title">スタンプラリーカード</h2>
-                            <h3>現在の獲得スタンプ数を確認できます！</h3>
-                            <form
-                                id="userForm2"
-                                action="https://script.google.com/macros/s/AKfycbzJuiTsdplcphyz-_MElRafKzaAO-KQYP3PEE6HM_BhPBaQE58LTqVjlY6719VDg8Kpsw/exec"
-                                method="post"
-                                >
-                             <!-- ユーザーIDは動的に追加されます -->
-                             <button class="button2" type="submit">ログインされていません</button>
-                            </form>
-                    </p> 
-        
-                </div>
+            <optgroup label="景品の応募">
+                <option value="21">景品はどのようなものがある？</option>
+                <option value="22">景品の当選はいつ？</option>
+                <option value="23">景品は何回応募できる？</option>                
+            </optgroup>
 
-            </div>
-            <div class="tab_content" id="stamp_content">
-                <div class="tab_content_description">
-                  <p class="c-txtsp">
-                        <form
-                        id="userForm3"
-                        action="https://script.google.com/macros/s/AKfycbybTNYN21_S6St7VRoVlC_41t-n-yJRCevatUZSQn8O9a7rgrz03ZyF0MI7wSiYYlGi/exec"
-                        method="post"
-                        >
-                        <h2 class="attention">スタンプラリー初めての方<br>
-                            初めにユーザー登録をしてください！！</h2>
-                        <h2 class="title">QRコードの読み取り</h2>
-                        <h2>①QRコードを読み込む<br>②スポットIDをコピー<br>
-                        <a href="https://liff.line.me/2007108080-jR8JqOgX" target="_self" class="qrUrl">ここをクリック!!</a></h2>
+            <optgroup label="限定画像">
+              <option value="24">限定画像はスタンプ何個でプレゼント？</option>
+              <option value="25">限定画像の保存方法</option>
+          </optgroup>
 
-                        <h2>③スポットIDを貼り付ける</h2>
-                        <label for="spotId"
-                        >
-                        <span class="required">
-                        先ほどコピーした値を貼り付けてください！</span
-                        ></label
-                        ><br />
-                        <input type="text" name="spotId" id="spotId" required /><br />
-                        <!-- ユーザーIDは動的に追加されます -->
-                        <button class="button3" type="submit">ログインされていません</button>
-                        </form>
-                    </p> 
-            
-                </div>
+        </select>
 
-            </div>    
-        </div>
+                    
+                      <form
+                          id="userForm4"
+                          action="https://script.google.com/macros/s/AKfycbzJuiTsdplcphyz-_MElRafKzaAO-KQYP3PEE6HM_BhPBaQE58LTqVjlY6719VDg8Kpsw/exec"
+                          method="post"
+                          >
+                       <!-- ユーザーIDは動的に追加されます -->
+                       <button class="button4" type="submit">ログインされていません</button>
+                      </form>
 
-        <style>
-            .title {
-              border-bottom-style: double;
-              border-color: blue;
-              display: inline-block;
-      
-            }
-            .tabs {
-                margin-top: 50px;
-                padding-bottom: 40px;
-                background-color: #fff;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-                width: 100%;
-                margin: 0 auto;}
-         
-            .tab_item {
-                width: calc(100%/3);
-                height: 50px;
-                border-bottom: 3px solid #5ab4bd;
-                background-color: #d9d9d9;
-                line-height: 50px;
-                font-size: 16px;
-                text-align: center;
-                color: #565656;
-                display: block;
-                float: left;
-                text-align: center;
-                font-weight: bold;
-                transition: all 0.2s ease;
-                }
-            .tab_item:hover {
-                opacity: 0.75;
-                }
+      </p>
+    </div>
+  </div>
+</div>
 
-            /*ラジオボタンを全て消す*/
-            input[name="tab_item"] {
-                display: none;
-                }
+<style>
+  .title {
+    border-bottom-style: double;
+    border-color: blue;
+    display: inline-block;
+  }
+  .tabs {
+    margin-top: 50px;
+    padding-bottom: 40px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    margin: 0 auto;
+  }
 
-            /*タブ切り替えの中身のスタイル*/
-            .tab_content {
-                display: none;
-                padding: 40px 40px 0;
-                clear: both;
-                overflow: hidden;
-                }
+  .tab_item {
+    width: calc(100% / 4);
+    height: 50px;
+    border-bottom: 3px solid #5ab4bd;
+    background-color: #d9d9d9;
+    line-height: 50px;
+    font-size: 16px;
+    text-align: center;
+    color: #565656;
+    display: block;
+    float: left;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.2s ease;
+  }
+  .tab_item:hover {
+    opacity: 0.75;
+  }
 
+  /*ラジオボタンを全て消す*/
+  input[name="tab_item"] {
+    display: none;
+  }
 
-            /*選択されているタブのコンテンツのみを表示*/
-            #registration:checked ~ #registration_content,
-            #mypage:checked ~ #mypage_content,
-            #stamp:checked ~ #stamp_content {
-                display: block;
-                }
+  /*タブ切り替えの中身のスタイル*/
+  .tab_content {
+    display: none;
+    padding: 40px 40px 0;
+    clear: both;
+    overflow: hidden;
+  }
 
-            /*選択されているタブのスタイルを変える*/
-            .tabs input:checked + .tab_item {
-                background-color: #5ab4bd;
-                color: #fff;
-            }
-            
+  /*選択されているタブのコンテンツのみを表示*/
+  #registration:checked ~ #registration_content,
+  #mypage:checked ~ #mypage_content,
+  #inquiry:checked ~ #inquiry_content,
+  #stamp:checked ~ #stamp_content {
+    display: block;
+  }
 
-        </style>
+  /*選択されているタブのスタイルを変える*/
+  .tabs input:checked + .tab_item {
+    background-color: #5ab4bd;
+    color: #fff;
+  }
+</style>
+
 
       <br>
       <br>
@@ -408,12 +497,15 @@
         width: 100%;
         border-style: double;
         border-color: red;
+        color :red;
+        font-family: sans-serif;
             }
       .qrUrl {
         color: red;
       }
-      .attention {
-        color :red;
+
+      select {
+        font-size: 200%;
       }
       </style>
   </body>
