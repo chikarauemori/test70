@@ -110,7 +110,8 @@
         action="https://script.google.com/macros/s/AKfycbyDlg9VdkhsnGSW-tdHIfnUTYakpdi113xRyJbt0WBFV4F0zOqzMLkSzxkK97EUltnt/exec"
         method="post"
         >
-       <img class="alert" src="https://i.ibb.co/NnV8KMtC/2025-04-04-0-43-24.png" alt="2025-04-04-0-43-24" border="0">
+        <h2 class="title">スタンプラリー初めての方</h2><br>
+        <button onclick="changeRadio('registration')">ユーザー登録は<br>ここをクリック</button><br>
         <h2 class="title">QRコードの読み取り</h2>
         <h3>①QRコードを読み込む<br>②スポットIDをコピー<br></h3>
         <h2 class=qrbutton><a href="https://liff.line.me/2007108080-jR8JqOgX" target="_self" class="qrUrl">ここをタップ!!</a></h2>
@@ -129,11 +130,18 @@
       </p>
     </div>
   </div>
+  <script>
+    function changeRadio(id){
+      document.getElementById(id).checked = true;
+    }
+  </script>
 
   <div class="tab_content" id="mypage_content">
     <div class="tab_content_description">
       <p class="c-txtsp">
-       <img class="alert" src="https://i.ibb.co/NnV8KMtC/2025-04-04-0-43-24.png" alt="2025-04-04-0-43-24" border="0">
+       <h2 class="title">スタンプラリー初めての方</h2><br>
+        <button onclick="changeRadio('registration')">ユーザー登録は<br>ここをクリック</button><br>
+       
           <h2 class="title">スタンプラリーカード</h2>
           <h3>現在の獲得スタンプ数を確認できます！</h3>
           <form
