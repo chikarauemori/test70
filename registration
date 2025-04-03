@@ -83,7 +83,7 @@
     id="stamp"
     type="radio"
     name="tab_item"
-    checked
+   
     aria-label="スタンプ獲得"
   />
   <label class="tab_item" for="stamp">スタンプ獲得</label>
@@ -95,6 +95,7 @@
     id="registration"
     type="radio"
     name="tab_item"
+     checked
     aria-label="ユーザー登録"
   />
   <label class="tab_item" for="registration">ユーザー登録</label>
