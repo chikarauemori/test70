@@ -64,7 +64,7 @@
           document.querySelector(".button2").textContent =
             "スタンプラリーカード";
           document.querySelector(".button3").textContent = "スタンプ獲得";
-          document.querySelector(".button4").textContent = "お問合せ";
+          document.querySelector(".button4").textContent = "終了証作成";
         } catch (err) {
           console.log("プロフィール取得エラー: ", err);
         }
@@ -99,8 +99,8 @@
   />
   <label class="tab_item" for="registration">ユーザー登録</label>
 
-  <input id="inquiry" type="radio" name="tab_item" aria-label="お問合せ" />
-  <label class="tab_item" for="inquiry">お問合せ</label>
+  <input id="inquiry" type="radio" name="tab_item" aria-label="終了証" />
+  <label class="tab_item" for="inquiry">終了証</label>
 
 
   
@@ -261,6 +261,17 @@
   <div class="tab_content" id="inquiry_content">
     <div class="tab_content_description">
       <p class="c-txtsp">
+      <h2 class="title">終了証</h2>
+        
+      <form
+        id="userForm4"
+        action="https://script.google.com/macros/s/AKfycbwcvz2650SkCaCG7XxgZQ2Qoxl2UAO5owXHnMK85PxgZF11yQ2LeGfPbDdKcnfrPL7N/exec"
+        method="post"
+        >
+      <!-- ユーザーIDは動的に追加されます -->
+      <button class="button4" type="submit">ログインされていません</button>
+      </form>
+        
         <h2 title>お問い合わせ</h2>
         <h3>※お急ぎの場合、公式LINEアカウントにお問合せください</h3>
         
@@ -322,14 +333,7 @@
         </select>
 
                     
-                      <form
-                          id="userForm4"
-                          action="https://script.google.com/macros/s/AKfycbzJuiTsdplcphyz-_MElRafKzaAO-KQYP3PEE6HM_BhPBaQE58LTqVjlY6719VDg8Kpsw/exec"
-                          method="post"
-                          >
-                       <!-- ユーザーIDは動的に追加されます -->
-                       <button class="button4" type="submit">ログインされていません</button>
-                      </form>
+                      
 
       </p>
     </div>
