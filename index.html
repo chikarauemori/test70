@@ -79,13 +79,19 @@
     const urlParams = new URLSearchParams(window.location.search);
     const tab = urlParams.get('tab');
 
-    if ( tab === 'registration') {
-      changeRadio ( 'registration' );
+        if (tab === 'registration') {
+      changeRadio('registration');
+    } else if (tab === 'stamp') {
+      changeRadio('stamp');
+    } else if (tab === 'mypage') {
+      changeRadio('mypage');
+    } else if (tab === 'certificate') {
+      changeRadio('certificate');
+    } else {
+      // デフォルトの処理
+      console.log('No matching tab parameter');
     }
   };
-  function changeRadio(id) {
-    document.getElementById(id).checked = true;
-  }
 </script>
 
      
@@ -111,8 +117,8 @@
   />
   <label class="tab_item" for="registration">ユーザー登録</label>
 
-  <input id="inquiry" type="radio" name="tab_item" aria-label="終了証" />
-  <label class="tab_item" for="inquiry">終了証</label>
+  <input id="certificate" type="radio" name="tab_item" aria-label="終了証" />
+  <label class="tab_item" for="certificate">終了証</label>
 
 
   
@@ -266,7 +272,7 @@
 
 
   
-  <div class="tab_content" id="inquiry_content">
+  <div class="tab_content" id="certificate_content">
     <div class="tab_content_description">
       <p class="c-txtsp">
       <h2 class="title">終了証</h2>
@@ -399,7 +405,7 @@
   /*選択されているタブのコンテンツのみを表示*/
   #registration:checked ~ #registration_content,
   #mypage:checked ~ #mypage_content,
-  #inquiry:checked ~ #inquiry_content,
+  #certificate:checked ~ #inquiry_content,
   #stamp:checked ~ #stamp_content {
     display: block;
   }
