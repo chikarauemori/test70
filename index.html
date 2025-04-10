@@ -125,12 +125,12 @@
   <div class="tab_content" id="stamp_content">
     <div class="tab_content_description">
       <p class="c-txtsp">
-        <form
+        <form onsubmit="disableButton(this)"
         id="userForm3"
         action="https://script.google.com/macros/s/AKfycbwxZV4KFxmPISgpSXRqbKJpLcdHoznLCFmC93RaZLsnTsIfaL6Hd5GUnAicd8s6XSlw/exec"
         method="post"
         >
-
+          
         <h2 class="title">スポットIDを貼り付ける</h2><br>
         <label for="spotId"
         >
@@ -143,7 +143,16 @@
         <!-- ユーザーIDは動的に追加されます -->
         <button class="button3" type="submit">ログインされていません</button>
         </form>
-        
+
+        <script>
+        function disableButton(form) {
+        const button = form.querySelector('button[type="submit"]');
+        if (button) {
+        button.disabled = true;
+        button.textContent = "送信中・・・";
+        }
+        }
+</script>
         
         <h2 class="title">QRコードの読み取り</h2>
         <h4>QRコードの読み取りがまだの方はこちら↓</h4>
