@@ -131,7 +131,9 @@
         method="post"
         >
 
-          <h3 class="user"><a href="#" onclick="selectRadio('registration'); return false;">青を選ぶリンク</a></h3>
+          <h3 class="user">
+            <a href="#" class="blinking-link" onclick="selectRadio('registration'); return false;">初めての方は、<br>ユーザー登録をしよう!!</a>
+          </h3>
 
         <script>
         function selectRadio(id) {
@@ -143,7 +145,7 @@
         </script>
 
         <style>
-          .user{
+          .blinking-link{
             color: red;
             animation: blanking 1s ease-in-out infinite alternate;
           }
