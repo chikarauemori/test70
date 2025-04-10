@@ -130,6 +130,36 @@
         action="https://script.google.com/macros/s/AKfycbxMFCV6nZBlMfYxKvLmqx4_Kj2R0RN198GnbN9zT3qNNe3hEM1btE7iaM472yx6hmSx/exec"
         method="post"
         >
+
+          <h3 class="user"><a href="#" onclick="selectRadio('registration'); return false;">青を選ぶリンク</a></h3>
+
+        <script>
+        function selectRadio(id) {
+        const radio = document.getElementById(id);
+        if (radio) {
+        radio.checked = true;
+        }
+        }
+        </script>
+
+        <style>
+          .user{
+            color: red;
+            animation: blanking 1s ease-in-out infinite alternate;
+          }
+
+          @keyframes blinking {
+            0% {
+              opacity: 0;
+            }
+
+            100% {
+              opacity: 1;
+            }
+          }
+            
+          </style>
+        
           
         <h2 class="title">スポットIDを貼り付ける</h2><br>
         <label for="spotId"
