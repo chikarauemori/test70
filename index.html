@@ -152,7 +152,7 @@
         button.textContent = "送信中・・・";
         }
         }
-</script>
+        </script>
         
         <h2 class="title">QRコードの読み取り</h2>
         <h4>QRコードの読み取りがまだの方はこちら↓</h4>
@@ -181,7 +181,7 @@
        
           <h2 class="title">スタンプラリーカード</h2>
           <h3>現在の獲得スタンプ数を確認できます！</h3>
-          <form
+          <form onsubmit="disableButton(this)"
               id="userForm2"
               action="https://script.google.com/macros/s/AKfycbx3Lbb79Hnrsnmyj7nldq5hY5pW52XJ__djZfv4SSJaEFXB4e_CDXq7zgi4vndUPI1l3w/exec"
               method="post"
@@ -200,7 +200,7 @@
     <div class="tab_content_description">
       <p class="c-txtsp">
         <h2 class="title">ユーザー登録</h2>
-                        <form
+                        <form onsubmit="disableButton(this)"
                               id="userForm1"
                               action="https://script.google.com/macros/s/AKfycbx1-zodRBIuIhhQPkAioAHMwmYvXcuYCHpOtlamEu2K3h7qUdRXA6z18bk5gC7U2Ma1dw/exec"
                               method="post"
@@ -286,7 +286,7 @@
       <p class="c-txtsp">
       <h2 class="title">終了証</h2>
         
-      <form
+      <form onsubmit="disableButton(this)"
         id="userForm4"
         action="https://script.google.com/macros/s/AKfycbzSZUZ1TTNBXS4E-RM93Tr9zrn9SCwTxlfHN4PapOkL_4cbJhx0JNeXeJD8Vc98nmqw/exec"
         method="post"
