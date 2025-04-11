@@ -170,18 +170,33 @@
           </style>
         
           
-        <h2 class="title">スポットIDを貼り付ける</h2><br>
+        <h2 class="title">①スポットIDを貼り付ける</h2><br>
         <label for="spotId"
         >
         <span class="required">
-          ※スポットのQRコードを先に読み取ってください！<br>
-        ↓先ほどコピーした値を貼り付けてください！</span
+          <h2>
+          <button onclick="pasteFromClipboard()">①スポットID貼り付けは<br>ここをタップ！</button
+          ><br /></h2><br>
+        <script>
+        async function pasteFromClipboard() {
+        try {
+        const text = await navigator.clipboard.readText();
+        document.getElementById("output").value = text;
+
+       } catch (err) {
+        alert("クリップボードの読み込みに失敗しました:" + err);
+       }
+    }
+  </script>
+        </span
         ></label
         ><br />
-        <input type="text" name="spotId" id="spotId" required /><br />
+        <input type="text" name="spotId" id="output" required /><br />
         <!-- ユーザーIDは動的に追加されます -->
         <button class="button3" type="submit">ログインされていません</button>
         </form>
+
+        
 
         <script>
         function disableButton(form) {
