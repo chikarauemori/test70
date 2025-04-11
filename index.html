@@ -61,8 +61,7 @@
 
           // ボタンのテキストを変更
           document.querySelector(".button1").textContent = "ユーザー登録";
-          document.querySelector(".button2").textContent =
-            "スタンプラリー"\n"カード";
+          document.querySelector(".button2").innerHTML = "スタンプラリー<br>カード";
           document.querySelector(".button3").textContent = "スタンプ獲得";
           document.querySelector(".button4").textContent = "終了証作成";
         } catch (err) {
@@ -577,6 +576,7 @@
 
       button {
         font-size: 200%;
+        text-align: center;
         display: inline-block;
       }
       .information{
