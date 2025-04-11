@@ -131,7 +131,7 @@
         >
 
           <h3 class="user">
-            <a href="#" class="blinking-link" onclick="selectRadio('registration'); return false;">初めての方は、<br>ユーザー登録をしよう!!<br>ここをタップ!!</a>
+            <a href="#" class="user-link" onclick="selectRadio('registration'); return false;">初めての方は、<br>ユーザー登録をしよう!!<br>ここをタップ!!</a>
           </h3>
 
         <script>
@@ -147,7 +147,14 @@
           .blinking-link{
             color: red;
             text-align: center;
-            animation: blinking 1s ease-in-out infinite alternate;
+            animation: blinking 2s ease-in-out infinite alternate;
+          }
+
+          <style>
+          .user-link{
+            color: red;
+            text-align: center;
+            
           }
 
           @keyframes blinking {
