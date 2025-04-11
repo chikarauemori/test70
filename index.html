@@ -182,7 +182,7 @@
         async function pasteFromClipboard() {
         try {
         const text = await navigator.clipboard.readText();
-        document.getElementbyId("paste").textContent="ペーストをタップしてください"
+        document.getElementbyId("paste").textContent="ペーストをタップしてください";
         document.getElementById("output").value = text;
 
        } catch (err) {
