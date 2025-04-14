@@ -46,7 +46,7 @@
           const userId = profile.userId;
 
           // 各フォームにユーザーIDを追加
-          ["userForm1", "userForm2", "userForm3", "userForm4"].forEach(
+          ["userForm1", "userForm2", "userForm3", "userForm4","userForm5"].forEach(
             (formId) => {
               const form = document.getElementById(formId);
               if (form) {
@@ -64,6 +64,7 @@
           document.querySelector(".button2").innerHTML = "スタンプラリー<br>カード";
           document.querySelector(".button3").textContent = "スタンプ獲得";
           document.querySelector(".button4").textContent = "終了証作成";
+          document.querySelector(".button5").textContent = "お問い合わせ";
         } catch (err) {
           console.log("プロフィール取得エラー: ", err);
         }
@@ -358,7 +359,14 @@
         <h2 title>お問い合わせ</h2>
         <h3>※お急ぎの場合、公式LINEアカウントにお問合せください</h3>
         
-        <h3>お問い合わせ内容をリストから選んでください</h3>   
+        <h3>お問い合わせ内容をリストから選んでください</h3>  
+
+        <form onsubmit="disableButton(this)"
+                              id="userForm5"
+                              action="https://script.google.com/macros/s/AKfycbzGeXD_gov0uexK0xeP6ZdMzNVck8PoIY1PMaJ8Q2HZMfvU_A1JfVkTYJwqelVrdA1rIw/exec"
+                              method="post"
+                            >
+        
         <select>
             <optgroup label=""></optgroup>
             <option value=""></option>           
@@ -414,6 +422,9 @@
           </optgroup>
 
         </select>
+        <!-- ユーザーIDは動的に追加されます -->
+      <button class="button5" type="submit">ログインされていません</button>
+        </form>
 
                     
                       
