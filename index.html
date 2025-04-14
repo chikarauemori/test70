@@ -116,8 +116,8 @@
   />
   <label class="tab_item blinking-link" for="registration">ユーザー登録</label>
 
-  <input id="certificate" type="radio" name="tab_item" aria-label="終了証" />
-  <label class="tab_item" for="certificate">終了証</label>
+  <input id="certificate" type="radio" name="tab_item" aria-label="お問い合わせ" />
+  <label class="tab_item" for="certificate">お問い合わせ</label>
 
 
   
@@ -247,6 +247,19 @@
            <button class="button2" type="submit">ログインされていません</button>
           </form>
 
+        <h2 class="title">終了証</h2>
+        <p>イベント終了時ダウンロードしてください！</p>
+        
+      <form onsubmit="disableButton(this)"
+        id="userForm4"
+        action="https://script.google.com/macros/s/AKfycbwUlcCQ3DOFpv1U1x93tAv4yIWldbb0y0T3YxGZhEPf9bTuOvhkzTfJbP_AvakP6gUanw/exec"
+        method="post"
+        >
+      <!-- ユーザーIDは動的に追加されます -->
+      <button class="button4" type="submit">ログインされていません</button>
+      </form>
+        
+
       </p>
     </div>
   </div>
@@ -341,17 +354,7 @@
   <div class="tab_content" id="certificate_content">
     <div class="tab_content_description">
       <p class="c-txtsp">
-      <h2 class="title">終了証</h2>
-        
-      <form onsubmit="disableButton(this)"
-        id="userForm4"
-        action="https://script.google.com/macros/s/AKfycbwUlcCQ3DOFpv1U1x93tAv4yIWldbb0y0T3YxGZhEPf9bTuOvhkzTfJbP_AvakP6gUanw/exec"
-        method="post"
-        >
-      <!-- ユーザーIDは動的に追加されます -->
-      <button class="button4" type="submit">ログインされていません</button>
-      </form>
-        
+      
         <h2 title>お問い合わせ</h2>
         <h3>※お急ぎの場合、公式LINEアカウントにお問合せください</h3>
         
@@ -541,6 +544,9 @@
   </nav>
  
 <style>
+      #mypage_content{
+      text-align: center;
+      }
       .menu {
         position: fixed;
         left: 0;
