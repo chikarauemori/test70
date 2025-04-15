@@ -173,10 +173,7 @@
           
         <h2 class="title">スポットIDを貼り付けて<br>スタンプをゲットしよう！</h2>
         <h5>※スポットのQRコードを先に読み取ってください</h5>
-        <label for="spotId"
-        >
-      
-        <span class="required">
+        
           <h4>
           <button onclick="pasteFromClipboard()">①スポットID貼り付けは<br>ここをタップ！<br><br>👉【ペースト】をタップ</button
           ><br /><br></h4>
@@ -185,20 +182,19 @@
           <img src="https://ibb.org.ru/images/2025/04/14/5.png" alt="遊び方5" border="0" class="explain">
 
         <script>
-        async function pasteFromClipboard() {
-        try {
-        const text = await navigator.clipboard.readText();
-        document.getElementById("output").value = text;
+        async function main(){
+        const urlParams = new URLSearchjParams(location.search);
+        const spotId = urlParams.get("spot");
 
-       } catch (err) {
-        alert("クリップボードの読み込みに失敗しました:" + err);
-       }
-    }
+        document.getElementById("spotId").value = spotId;
+        }
+          main();
+        
   </script>
         </span
         ></label
         ><br />
-        <input type="text" name="spotId" id="output" required /><br />
+        <input type="hidden" name="spotId" id="spotId"/><br />
         <!-- ユーザーIDは動的に追加されます -->
         <button class="button3" type="submit">ログインされていません</button>
         </form>
