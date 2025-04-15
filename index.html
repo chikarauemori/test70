@@ -74,25 +74,7 @@
       console.log("LIFF初期化エラー:", err);
     });
 </script>
-<script>
-  window.onload = function(){
-    const urlParams = new URLSearchParams(window.location.search);
-    const tab = urlParams.get('tab');
 
-        if (tab === 'registration') {
-      changeRadio('registration');
-    } else if (tab === 'stamp') {
-      changeRadio('stamp');
-    } else if (tab === 'mypage') {
-      changeRadio('mypage');
-    } else if (tab === 'certificate') {
-      changeRadio('certificate');
-    } else {
-      // デフォルトの処理
-      console.log('No matching tab parameter');
-    }
-  };
-</script>
 
      
 
