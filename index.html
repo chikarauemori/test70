@@ -108,9 +108,10 @@
     <div class="tab_content_description">
       <p class="c-txtsp">
        
-
+          <h2 class="title">初めての方</h2>
           <h3 class="user">
-            <a href="#" class="user-link" onclick="selectRadio('registration'); return false;">初めての方は、<br>ユーザー登録をしよう!!<br>ここをタップ!!</a>
+            <button type=
+              <a href="#" class="user-link" onclick="selectRadio('registration'); return false;">初めての方は、<br>ユーザー登録をしよう!!<br>ここをタップ!!</a>
           </h3>
 
         <script>
@@ -148,13 +149,13 @@
             
           </style>
         
-          
+          <h2 class="title">QRコードを読み取って<br>スタンプを獲得しよう！</h2>
+        
         <button id="scanQR" type="button">QRコードをスキャン <br />ここをタップ！！</button>
     <h3>
-      ※QRコードはスポットごとに違います!<br />※スポットごとに読み取ってください!<br />※スポットIDは毎日変わります
+      ※QRコードはスポットごとに違います!<br />※スポットごとに読み取ってください!
     </h3>
-    <h2>QRコード読み取り方法</h2>
-    <img class="qr" src="./QRコード読み取り方法.png" />
+   
     <p>スキャン結果: <span id="result"></span></p>
 
    <script>
@@ -169,7 +170,8 @@
 
           liff.scanCodeV2().then((result) => {
             const qrCodeData = result.value;
-            document.getElementById("result").textContent = qrCodeData;
+            
+            document.getElementById("result").textContent = "QRコードの読み取りに成功しました";
 
             const params = new URLSearchParams(qrCodeData.split('?')[1]);
             const spotId = params.get('spot') || params.get('spotId');
@@ -196,25 +198,19 @@
 
 
     
-
+<h2 class="subTitle">②スタンプ獲得ボタンを押す</h2>
 <form 
 id="userForm3"
 action="https://script.google.com/macros/s/AKfycbw5IIpjvaJrujF8--k2-zx5CacyMmuLgdw0LDqEytoJj87P8Ns0UKHxCnyOabZv7Ft5/exec"
 method="post"
 >
-<button class="button3" type="submit">ログインされていません</button>
+<button id="button3" class="button3" type="submit">ログインされていません</button>
 </form>
 
         
 
-        
-        
-        <h2 class="title">QRコードの読み取り</h2>
-        <h4>QRコードの読み取りがまだの方はこちら↓</h4>
-        <button type="button" onclick="location.href='https://liff.line.me/2007108080-jR8JqOgX'">ここをタップ</button>
-        
-
-
+      
+          
 
 
         
