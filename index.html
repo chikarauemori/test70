@@ -153,28 +153,88 @@
           </style>
         
           
-        <h2 class="title">スポットIDを貼り付けて<br>スタンプをゲットしよう！</h2>
-        <h5>※スポットのQRコードを先に読み取ってください</h5>
-        
-         
+        <button id="scanQR">QRコードをスキャン <br />ここをタップ！！</button>
+    <h3>
+      ※QRコードはスポットごとに違います!<br />※スポットごとに読み取ってください!<br />※スポットIDは毎日変わります
+    </h3>
+    <h2>QRコード読み取り方法</h2>
+    <img class="qr" src="./QRコード読み取り方法.png" />
+    <p>スキャン結果: <span id="result"></span></p>
 
-          <h2 class="title">ユーザーIDの貼り付け方法↓↓</h2>
-          <img src="https://ibb.org.ru/images/2025/04/14/5.png" alt="遊び方5" border="0" class="explain">
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    liff.init({ liffId: "2007108080-jR8JqOgX" })
+      .then(async () => {
+        // ✅ ユーザーIDの取得とフォームに追加
+        if (!liff.isLoggedIn()) {
+          liff.login();
+        } else {
+          try {
+            const profile = await liff.getProfile();
+            const userId = profile.userId;
 
-        <script>
-        async function main(){
-        const urlParams = new URLSearchParams(location.search);
-        const spotId = urlParams.get("spot");
+            const form = document.getElementById("userForm3");
 
-        document.getElementById("spotId").value = spotId;
+            const userIdField = document.createElement("input");
+            userIdField.type = "hidden";
+            userIdField.name = "userId";
+            userIdField.value = userId;
+            form.appendChild(userIdField);
+
+            document.querySelector(".button3").textContent = "スタンプ獲得";
+          } catch (err) {
+            console.log("プロフィール取得エラー: ", err);
+          }
         }
-          main();
-        
-  </script>
-        <input type="text" name="spotId" id="spotId"/><br />
-        <!-- ユーザーIDは動的に追加されます -->
-        <button class="button3" type="submit">ログインされていません</button>
-        </form>
+
+        // ✅ QRコードスキャン処理
+        document.getElementById("scanQR").addEventListener("click", function () {
+          if (!liff.isInClient()) {
+            alert("LINEアプリ内で開いてください");
+            return;
+          }
+
+          liff.scanCodeV2()
+            .then((result) => {
+              const qrCodeData = result.value;
+              document.getElementById("result").textContent = qrCodeData;
+
+              const params = new URLSearchParams(qrCodeData.split('?')[1]);
+              const spotId = params.get('spot') || params.get('spotId'); // どちらでも対応
+
+              if (spotId) {
+                const form = document.getElementById("userForm3");
+
+                const spotIdField = document.createElement("input");
+                spotIdField.type = "hidden";
+                spotIdField.name = "spotId";
+                spotIdField.value = spotId;
+                form.appendChild(spotIdField);
+              } else {
+                alert("無効なQRコードです");
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        });
+      })
+      .catch((err) => {
+        console.log("LIFF初期化エラー:", err);
+      });
+  });
+</script>
+
+
+    
+
+<form onsubmit="disableButton(this)"
+id="userForm3"
+action="https://script.google.com/macros/s/AKfycbw5IIpjvaJrujF8--k2-zx5CacyMmuLgdw0LDqEytoJj87P8Ns0UKHxCnyOabZv7Ft5/exec"
+method="post"
+>
+<button class="button3" type="submit">ログインされていません</button>
+</form>
 
         
 
