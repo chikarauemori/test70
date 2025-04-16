@@ -173,7 +173,7 @@
             const qrCodeData = result.value;
             
             document.getElementById("result").textContent = "QRコードの読み取りに成功しました";
-            document.getElementById("button3").click();
+            
 
             const params = new URLSearchParams(qrCodeData.split('?')[1]);
             const spotId = params.get('spot') || params.get('spotId');
@@ -186,7 +186,7 @@
               spotIdField.value = spotId;
               form.appendChild(spotIdField);
 
-            
+              document.getElementById("button3").click();
               
             } else {
               alert("無効なQRコードです");
