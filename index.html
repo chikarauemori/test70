@@ -153,7 +153,7 @@
           </style>
         
           
-        <button id="scanQR">QRコードをスキャン <br />ここをタップ！！</button>
+        <button id="scanQR" type="button">QRコードをスキャン <br />ここをタップ！！</button>
     <h3>
       ※QRコードはスポットごとに違います!<br />※スポットごとに読み取ってください!<br />※スポットIDは毎日変わります
     </h3>
@@ -196,9 +196,7 @@
             });
         });
       })
-      .catch((err) => {
-        console.log("LIFF初期化エラー:", err);
-      });
+      
   });
 </script>
 
