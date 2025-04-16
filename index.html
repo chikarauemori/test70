@@ -157,7 +157,7 @@
     </h3>
    
     <p>スキャン結果: <span id="result"></span></p>
-      <p>スキャン結果: <span id="positionResult"></span></p>
+      
 
    <script>
   
@@ -173,6 +173,7 @@
             const qrCodeData = result.value;
             
             document.getElementById("result").textContent = "QRコードの読み取りに成功しました";
+            document.getElementById("button3").click();
 
             const params = new URLSearchParams(qrCodeData.split('?')[1]);
             const spotId = params.get('spot') || params.get('spotId');
@@ -191,36 +192,7 @@
               alert("無効なQRコードです");
             }
 
-          liff.getCurrentPosition()
-  .then((position) => {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-
-    // フォームにhiddenで追加
-    const form = document.getElementById("userForm3");
-    
-    const latField = document.createElement("input");
-    latField.type = "hidden";
-    latField.name = "latitude";
-    latField.value = latitude;
-    form.appendChild(latField);
-
-    const lngField = document.createElement("input");
-    lngField.type = "hidden";
-    lngField.name = "longitude";
-    lngField.value = longitude;
-    form.appendChild(lngField);
-
-    
-    document.getElementById("positionResult").textContent = "位置情報の読み取りに成功しました";
-    document.getElementById('button3').click();
-
-    // フォーム送信処理へ続く…
-  })
-  .catch((err) => {
-    alert("位置情報の取得に失敗しました");
-    console.error(err);
-  });
+         
             
           }).catch((err) => {
             console.error("QRコードスキャンエラー:", err);
