@@ -157,6 +157,7 @@
     </h3>
    
     <p>スキャン結果: <span id="result"></span></p>
+      <p>スキャン結果: <span id="positionResult"></span></p>
 
    <script>
   
@@ -184,7 +185,7 @@
               spotIdField.value = spotId;
               form.appendChild(spotIdField);
 
-              document.getElementById('button3').click();
+            
               
             } else {
               alert("無効なQRコードです");
@@ -213,6 +214,10 @@
     lngField.name = "longitude";
     lngField.value = longitude;
     form.appendChild(lngField);
+
+    
+    document.getElementById("positionResult").textContent = "QRコードの読み取りに成功しました";
+    document.getElementById('button3').click();
 
     // フォーム送信処理へ続く…
   })
