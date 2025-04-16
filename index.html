@@ -111,7 +111,7 @@
           <h2 class="title">初めての方</h2>
           <h3 class="user">
             <button type=
-              <a href="#" class="user-link" onclick="selectRadio('registration'); return false;">初めての方は、<br>ユーザー登録をしよう!!<br>ここをタップ!!</a>
+              <a href="#" class="user-link" onclick="selectRadio('registration'); return false;">初めての方は、<br>ユーザー登録をしよう!!<br>ここをタップ!!</a></button>
           </h3>
 
         <script>
@@ -151,7 +151,7 @@
         
           <h2 class="title">QRコードを読み取って<br>スタンプを獲得しよう！</h2>
         
-        <button id="scanQR" type="button">QRコードをスキャン <br />ここをタップ！！</button>
+        <h3><button id="scanQR" type="button">QRコードをスキャン <br />ここをタップ！！</button></h3>
     <h3>
       ※QRコードはスポットごとに違います!<br />※スポットごとに読み取ってください!
     </h3>
@@ -206,13 +206,14 @@
 
 
     
-<h2 class="subTitle">②スタンプ獲得ボタンを押す</h2>
+
 <form 
 id="userForm3"
 action="https://script.google.com/macros/s/AKfycbx5nC3RB7p5pe1P9wW9_b22aQNC4I3t_dOdJvIlEiDNOSSqxwZz83nr9cUGFAi6v5IQ/exec"
 method="post"
 >
 <button id="button3" class="button3" type="submit">ログインされていません</button>
+  <h3>QRコードを読み込むと<br>自動で送信されます</h3>
 </form>
 
         
@@ -441,6 +442,7 @@ method="post"
     border-bottom-style: double;
     border-color: blue;
     display: inline-block;
+    text-align: center;
   }
   .tabs {
     margin-top: 50px;
