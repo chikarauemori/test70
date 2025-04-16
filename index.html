@@ -165,37 +165,33 @@
   
 
         // ✅ QRコードスキャン処理
-        document.getElementById("scanQR").addEventListener("click", function () {
+        document.getElementById("scanQR").addEventListener("click", () => {
           if (!liff.isInClient()) {
             alert("LINEアプリ内で開いてください");
             return;
           }
 
-          liff.scanCodeV2()
-            .then((result) => {
-              const qrCodeData = result.value;
-              document.getElementById("result").textContent = qrCodeData;
+          liff.scanCodeV2().then((result) => {
+            const qrCodeData = result.value;
+            document.getElementById("result").textContent = qrCodeData;
 
-              const params = new URLSearchParams(qrCodeData.split('?')[1]);
-              const spotId = params.get('spot') || params.get('spotId'); // どちらでも対応
+            const params = new URLSearchParams(qrCodeData.split('?')[1]);
+            const spotId = params.get('spot') || params.get('spotId');
 
-              if (spotId) {
-                const form = document.getElementById("userForm3");
-
-                const spotIdField = document.createElement("input");
-                spotIdField.type = "hidden";
-                spotIdField.name = "spotId";
-                spotIdField.value = spotId;
-                form.appendChild(spotIdField);
-              } else {
-                alert("無効なQRコードです");
-              }
-            })
-           
+            if (spotId) {
+              const form = document.getElementById("userForm3");
+              const spotIdField = document.createElement("input");
+              spotIdField.type = "hidden";
+              spotIdField.name = "spotId";
+              spotIdField.value = spotId;
+              form.appendChild(spotIdField);
+            } else {
+              alert("無効なQRコードです");
+            }
+          }).catch((err) => {
+            console.error("QRコードスキャンエラー:", err);
+          });
         });
-      })
-      
-  });
 </script>
 
 
