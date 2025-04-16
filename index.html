@@ -193,95 +193,36 @@
             console.error("QRコードスキャンエラー:", err);
           });
         });
+
+     liff.getCurrentPosition()
+  .then((position) => {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    // フォームにhiddenで追加
+    const form = document.getElementById("userForm3");
+    
+    const latField = document.createElement("input");
+    latField.type = "hidden";
+    latField.name = "latitude";
+    latField.value = latitude;
+    form.appendChild(latField);
+
+    const lngField = document.createElement("input");
+    lngField.type = "hidden";
+    lngField.name = "longitude";
+    lngField.value = longitude;
+    form.appendChild(lngField);
+
+    // フォーム送信処理へ続く…
+  })
+  .catch((err) => {
+    alert("位置情報の取得に失敗しました");
+    console.error(err);
+  });
 </script>
 
-       <button id="scanQR" type="button">QRコードをスキャン <br />ここをタップ！！</button>
-    <h3>
-      ※QRコードはスポットごとに違います!<br />※スポットごとに読み取ってください!
-    </h3>
-   
-    <p>スキャン結果: <span id="result"></span></p>
-
-   <script>
-  
-
-        // ✅ QRコードスキャン処理
-        document.getElementById("scanQR").addEventListener("click", () => {
-          if (!liff.isInClient()) {
-            alert("LINEアプリ内で開いてください");
-            return;
-          }
-
-          liff.scanCodeV2().then((result) => {
-            const qrCodeData = result.value;
-            
-            document.getElementById("result").textContent = "QRコードの読み取りに成功しました";
-
-            const params = new URLSearchParams(qrCodeData.split('?')[1]);
-            const spotId = params.get('spot') || params.get('spotId');
-
-            if (spotId) {
-              const form = document.getElementById("userForm3");
-              const spotIdField = document.createElement("input");
-              spotIdField.type = "hidden";
-              spotIdField.name = "spotId";
-              spotIdField.value = spotId;
-              form.appendChild(spotIdField);
-
-              document.getElementById('button3').click();
-              
-            } else {
-              alert("無効なQRコードです");
-            }
-          }).catch((err) => {
-            console.error("QRコードスキャンエラー:", err);
-          });
-        });
-</script>
-       <button id="scanQR" type="button">QRコードをスキャン <br />ここをタップ！！</button>
-    <h3>
-      ※QRコードはスポットごとに違います!<br />※スポットごとに読み取ってください!
-    </h3>
-   
-    <p>スキャン結果: <span id="result"></span></p>
-
-   <script>
-  
-
-        // ✅ QRコードスキャン処理
-        document.getElementById("scanQR").addEventListener("click", () => {
-          if (!liff.isInClient()) {
-            alert("LINEアプリ内で開いてください");
-            return;
-          }
-
-          liff.scanCodeV2().then((result) => {
-            const qrCodeData = result.value;
-            
-            document.getElementById("result").textContent = "QRコードの読み取りに成功しました";
-
-            const params = new URLSearchParams(qrCodeData.split('?')[1]);
-            const spotId = params.get('spot') || params.get('spotId');
-
-            if (spotId) {
-              const form = document.getElementById("userForm3");
-              const spotIdField = document.createElement("input");
-              spotIdField.type = "hidden";
-              spotIdField.name = "spotId";
-              spotIdField.value = spotId;
-              form.appendChild(spotIdField);
-
-              document.getElementById('button3').click();
-              
-            } else {
-              alert("無効なQRコードです");
-            }
-          }).catch((err) => {
-            console.error("QRコードスキャンエラー:", err);
-          });
-        });
-</script>
-
+      
 
 
     
