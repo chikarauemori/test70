@@ -46,7 +46,7 @@
           const userId = profile.userId;
 
           // 各フォームにユーザーIDを追加
-          ["userForm1", "userForm2", "userForm4","userForm5"].forEach(
+          ["userForm1", "userForm2", "userForm3","userForm4","userForm5"].forEach(
             (formId) => {
               const form = document.getElementById(formId);
               if (form) {
@@ -62,7 +62,7 @@
           // ボタンのテキストを変更
           document.querySelector(".button1").textContent = "ユーザー登録";
           document.querySelector(".button2").innerHTML = "スタンプラリー<br>カード";
-          
+          document.querySelector(".button3").textContent = "スタンプ獲得";
           document.querySelector(".button4").textContent = "終了証作成";
           document.querySelector(".button5").textContent = "お問い合わせ";
         } catch (err) {
@@ -162,30 +162,7 @@
     <p>スキャン結果: <span id="result"></span></p>
 
    <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    liff.init({ liffId: "2007108080-jR8JqOgX" })
-      .then(async () => {
-        // ✅ ユーザーIDの取得とフォームに追加
-        if (!liff.isLoggedIn()) {
-          liff.login();
-        } else {
-          try {
-            const profile = await liff.getProfile();
-            const userId = profile.userId;
-
-            const form = document.getElementById("userForm3");
-
-            const userIdField = document.createElement("input");
-            userIdField.type = "hidden";
-            userIdField.name = "userId";
-            userIdField.value = userId;
-            form.appendChild(userIdField);
-
-            document.querySelector(".button3").textContent = "スタンプ獲得";
-          } catch (err) {
-            console.log("プロフィール取得エラー: ", err);
-          }
-        }
+  
 
         // ✅ QRコードスキャン処理
         document.getElementById("scanQR").addEventListener("click", function () {
@@ -229,7 +206,7 @@
 
     
 
-<form onsubmit="disableButton(this)"
+<form 
 id="userForm3"
 action="https://script.google.com/macros/s/AKfycbw5IIpjvaJrujF8--k2-zx5CacyMmuLgdw0LDqEytoJj87P8Ns0UKHxCnyOabZv7Ft5/exec"
 method="post"
