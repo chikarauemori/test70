@@ -162,6 +162,8 @@
     <p>スキャン結果: <span id="result"></span></p>
 
     <script>
+      liff.init({ liffId: "2007108080-jR8JqOgX" })
+      .then(async () => {
   document.addEventListener("DOMContentLoaded", function () {
         if (!liff.isLoggedIn()) {
           liff.login();
