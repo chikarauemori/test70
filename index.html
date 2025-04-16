@@ -238,6 +238,61 @@
           });
         });
 </script>
+       <button id="scanQR" type="button">QRコードをスキャン <br />ここをタップ！！</button>
+    <h3>
+      ※QRコードはスポットごとに違います!<br />※スポットごとに読み取ってください!
+    </h3>
+   
+    <p>スキャン結果: <span id="result"></span></p>
+
+   <script>
+  
+
+        // ✅ QRコードスキャン処理
+        document.getElementById("scanQR").addEventListener("click", () => {
+          if (!liff.isInClient()) {
+            alert("LINEアプリ内で開いてください");
+            return;
+          }
+
+          liff.scanCodeV2().then((result) => {
+            const qrCodeData = result.value;
+            
+            document.getElementById("result").textContent = "QRコードの読み取りに成功しました";
+
+            const params = new URLSearchParams(qrCodeData.split('?')[1]);
+            const spotId = params.get('spot') || params.get('spotId');
+
+            if (spotId) {
+              const form = document.getElementById("userForm3");
+              const spotIdField = document.createElement("input");
+              spotIdField.type = "hidden";
+              spotIdField.name = "spotId";
+              spotIdField.value = spotId;
+              form.appendChild(spotIdField);
+
+              document.getElementById('button3').click();
+              
+            } else {
+              alert("無効なQRコードです");
+            }
+          }).catch((err) => {
+            console.error("QRコードスキャンエラー:", err);
+          });
+        });
+</script>
+
+
+
+    
+<h2 class="subTitle">②スタンプ獲得ボタンを押す</h2>
+<form 
+id="userForm3"
+action="https://script.google.com/macros/s/AKfycbw5IIpjvaJrujF8--k2-zx5CacyMmuLgdw0LDqEytoJj87P8Ns0UKHxCnyOabZv7Ft5/exec"
+method="post"
+>
+<button class="button3" type="submit">ログインされていません</button>
+</form>
 
 
 
