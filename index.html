@@ -107,7 +107,7 @@
   <div class="tab_content" id="stamp_content">
     <div class="tab_content_description">
       <p class="c-txtsp">
-        <form onsubmit="disableButton(this)"
+        <form 
         id="userForm3"
         action="https://script.google.com/macros/s/AKfycbw5IIpjvaJrujF8--k2-zx5CacyMmuLgdw0LDqEytoJj87P8Ns0UKHxCnyOabZv7Ft5/exec"
         method="post"
@@ -161,14 +161,11 @@
     <img class="qr" src="./QRコード読み取り方法.png" />
     <p>スキャン結果: <span id="result"></span></p>
 
-    <script>
-      liff
-    .init({
-      liffId: "2007154146-Y5jGo0G3",
-    })
-    .then(async () => {
-     
+   <script>
   document.addEventListener("DOMContentLoaded", function () {
+    liff.init({ liffId: "2007108080-jR8JqOgX" })
+      .then(async () => {
+        // ✅ ユーザーIDの取得とフォームに追加
         if (!liff.isLoggedIn()) {
           liff.login();
         } else {
@@ -227,6 +224,7 @@
       });
   });
 </script>
+
 
 
     
