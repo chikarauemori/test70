@@ -190,12 +190,8 @@
             } else {
               alert("無効なQRコードです");
             }
-          }).catch((err) => {
-            console.error("QRコードスキャンエラー:", err);
-          });
-        });
 
-     liff.getCurrentPosition()
+          liff.getCurrentPosition()
   .then((position) => {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
@@ -216,7 +212,7 @@
     form.appendChild(lngField);
 
     
-    document.getElementById("positionResult").textContent = "QRコードの読み取りに成功しました";
+    document.getElementById("positionResult").textContent = "位置情報の読み取りに成功しました";
     document.getElementById('button3').click();
 
     // フォーム送信処理へ続く…
@@ -225,6 +221,13 @@
     alert("位置情報の取得に失敗しました");
     console.error(err);
   });
+            
+          }).catch((err) => {
+            console.error("QRコードスキャンエラー:", err);
+          });
+        });
+
+     
 </script>
 
       
