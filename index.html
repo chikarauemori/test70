@@ -46,7 +46,7 @@
           const userId = profile.userId;
 
           // 各フォームにユーザーIDを追加
-          ["userForm1", "userForm2", "userForm3","userForm4","userForm5"].forEach(
+          ["userForm1", "userForm2", "userForm3","userForm4","userForm5","userForm6"].forEach(
             (formId) => {
               const form = document.getElementById(formId);
               if (form) {
@@ -65,6 +65,7 @@
           document.querySelector(".button3").textContent = "スタンプ獲得";
           document.querySelector(".button4").textContent = "終了証作成";
           document.querySelector(".button5").textContent = "お問い合わせ";
+          document.querySelector(".button6").textContent = "背景画像を変更する";
         } catch (err) {
           console.log("プロフィール取得エラー: ", err);
         }
@@ -269,6 +270,113 @@ method="post"
            <button class="button2" type="submit">ログインされていません</button>
           </form>
 
+
+        <h2 class="title">スタンプカード<br>背景画像を変更する</h2>
+       <form onsubmit="disableButton(this)"
+              id="userForm6"
+              action="https://script.google.com/macros/s/AKfycbzIh2NPlhf6Ocn877ng6-hUN4-fYCbZaY3zE05N7AqxgcXjXwU7iDwQq7hDpKw6Eo_Cgw/exec"
+              method="post"
+              >
+            <div class="radio-group">
+        <div class="radio-area">
+            <input type="radio" name="backImg" value="1">
+            <img class="backImg" src="./背景1.png">
+        
+        </div>
+
+    </div>
+
+    <div class="radio-group">
+        <div class="radio-area">
+            <input type="radio" name="backImg" value="2">
+            <img class="backImg" src="./背景2.png">
+        
+        </div>
+
+    </div>
+
+    <div class="radio-group">
+        <div class="radio-area">
+            <input type="radio" name="backImg" value="3">
+            <img class="backImg" src="./背景3.png">
+        
+        </div>
+
+    </div>
+
+    <div class="radio-group">
+        <div class="radio-area">
+            <input type="radio" name="backImg" value="4">
+            <img class="backImg" src="./背景4.png">
+        
+        </div>
+
+    </div>
+
+    <div class="radio-group">
+        <div class="radio-area">
+            <input type="radio" name="backImg" value="5">
+            <img class="backImg" src="./背景5.png">
+        
+        </div>
+
+    </div>
+
+    <div class="radio-group">
+        <div class="radio-area">
+            <input type="radio" name="backImg" value="6">
+            <img class="backImg" src="./背景6.png">
+        
+        </div>
+
+    </div>
+
+    <div class="radio-group">
+        <div class="radio-area">
+            <input type="radio" name="backImg" value="7">
+            <img class="backImg" src="./背景7.png">
+        
+        </div>
+
+    </div>
+
+    <div class="radio-group">
+        <div class="radio-area">
+            <input type="radio" name="backImg" value="8">
+            <img class="backImg" src="./背景8.png">
+        
+        </div>
+
+    </div>
+
+    <div class="radio-group">
+        <div class="radio-area">
+            <input type="radio" name="backImg" value="9">
+            <img class="backImg" src="./背景9.png">
+        
+        </div>
+
+    </div>
+
+    <button class="button6" type="submit">ログインされていません</button>
+          </form>
+
+<style>
+    .backImg{
+        width: 50%;
+    }
+
+    .radio-group {
+    
+    column-gap: .5rem;
+    margin-bottom: 0.5rem;
+    padding: 1rem 0.5rem;
+    border: 1px solid #333;
+    background-color: #fff;
+}
+</style>
+
+      
         <h2 class="title">終了証</h2>
         <h3>イベント終了時ゲットしよう！！</h3>
         
