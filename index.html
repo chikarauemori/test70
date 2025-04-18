@@ -192,13 +192,32 @@
               alert("無効なQRコードです");
             }
 
-         
+           navigator.geolocation.getCurrentPosition(position => {
+             const lat = position.coords.latitude;
+             const lng = position.coords.longitude;
+
+            const form = document.getElementById("userForm3");
+              const latField = document.createElement("input");
+              latField.type = "hidden";
+              latField.name = "lat";
+              latField.value = lat;
+              form.appendChild(latField);
+             
+             const form = document.getElementById("userForm3");
+              const lngField = document.createElement("input");
+              lngField.type = "hidden";
+              lngField.name = "lng";
+              lngField.value = lng;
+              form.appendChild(lngField);
+             
+           });
             
           }).catch((err) => {
             console.error("QRコードスキャンエラー:", err);
           });
         });
 
+       
      
 </script>
 
@@ -546,9 +565,9 @@ method="post"
       <li>
         <a
           href="
-        https://liff.line.me/2007108080-jR8JqOgX" target="_self"
-          ><i class="fa-solid fa-qrcode"></i><br /><span class="iconname"
-            >QRコード</span
+        https://chikarauemori.github.io/test77/" target="_self"
+          ><i class="fa-regular fa-list-ol"></i><br /><span class="iconname"
+            >遊び方</span
           ></a
         >
       </li>
