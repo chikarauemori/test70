@@ -258,7 +258,7 @@ method="post"
 
         <h2 class="title">スタンプカード<br>背景画像を変更する</h2>
       <h3>お好きな背景画像に変更できます！</h3>
-      <h3>どのタイミングでもOK</h3>
+      
        <form onsubmit="disableButton(this)"
               id="userForm6"
               action="https://script.google.com/macros/s/AKfycbw7q_NFEDMeyV-O0W7NnhKU5WHNhpKiLtEN1l-lreLX9UJsUBbh-3N9LS9yai_qG8JS4A/exec"
@@ -267,7 +267,7 @@ method="post"
             <div class="radio-group">
         <div class="radio-area">
             <input type="radio" name="backImg" value="1">
-            <img class="backImg" src="./背景1.png">
+            <img class="backImg" src="./背景1.png" class="radio">
         
         </div>
 
@@ -276,7 +276,7 @@ method="post"
     <div class="radio-group">
         <div class="radio-area">
             <input type="radio" name="backImg" value="2">
-            <img class="backImg" src="./背景2.png">
+            <img class="backImg" src="./背景2.png" class="radio">
         
         </div>
 
@@ -285,7 +285,7 @@ method="post"
     <div class="radio-group">
         <div class="radio-area">
             <input type="radio" name="backImg" value="3">
-            <img class="backImg" src="./背景3.png">
+            <img class="backImg" src="./背景3.png" class="radio">
         
         </div>
 
@@ -294,7 +294,7 @@ method="post"
     <div class="radio-group">
         <div class="radio-area">
             <input type="radio" name="backImg" value="4">
-            <img class="backImg" src="./背景4.png">
+            <img class="backImg" src="./背景4.png" class="radio">
         
         </div>
 
@@ -303,7 +303,7 @@ method="post"
     <div class="radio-group">
         <div class="radio-area">
             <input type="radio" name="backImg" value="5">
-            <img class="backImg" src="./背景5.png">
+            <img class="backImg" src="./背景5.png" class="radio">
         
         </div>
 
@@ -312,7 +312,7 @@ method="post"
     <div class="radio-group">
         <div class="radio-area">
             <input type="radio" name="backImg" value="6">
-            <img class="backImg" src="./背景6.png">
+            <img class="backImg" src="./背景6.png" class="radio">
         
         </div>
 
@@ -321,7 +321,7 @@ method="post"
     <div class="radio-group">
         <div class="radio-area">
             <input type="radio" name="backImg" value="7">
-            <img class="backImg" src="./背景7.png">
+            <img class="backImg" src="./背景7.png" class="radio">
         
         </div>
 
@@ -330,7 +330,7 @@ method="post"
     <div class="radio-group">
         <div class="radio-area">
             <input type="radio" name="backImg" value="8">
-            <img class="backImg" src="./背景8.png">
+            <img class="backImg" src="./背景8.png" class="radio">
         
         </div>
 
@@ -339,7 +339,7 @@ method="post"
     <div class="radio-group">
         <div class="radio-area">
             <input type="radio" name="backImg" value="9">
-            <img class="backImg" src="./背景9.png">
+            <img class="backImg" src="./背景9.png" class="radio">
         
         </div>
 
@@ -349,6 +349,9 @@ method="post"
           </form>
 
 <style>
+    .radio{
+      transform: scale(1.5);
+      }
     .backImg{
         width: 50%;
     }
