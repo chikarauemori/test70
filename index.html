@@ -25,7 +25,8 @@
           <div id="loading">
         <div class="loading-content">
             <img src="https://i.ibb.co/Wv8X3LVh/1.png">
-            <h2>loading・・・</h2>
+          <h2>スタンプラリーの準備中です！！</h2>
+          <h2>loading・・・</h2>
         </div>
     </div>
       <script>
@@ -150,6 +151,14 @@
     });
 </script>
 
+    <script>
+function disableButton(form) {
+  const button = form.querySelector('button[type="submit"]');
+  button.disabled = true;
+  button.textContent = '送信中...';
+  return true; // フォームの送信を続ける
+}
+</script>
 
      
 
@@ -324,7 +333,7 @@ method="post"
               >
            <!-- ユーザーIDは動的に追加されます -->
            <button class="button2" type="submit">ログインされていません</button>
-          </form>
+          </form><br>
 
 
         <h2 class="title">スタンプカード<br>背景画像を変更する</h2>
@@ -472,7 +481,7 @@ method="post"
         <h2 class="title">ユーザー登録</h2>
                         <form onsubmit="disableButton(this)"
                               id="userForm1"
-                              action="https://script.google.com/macros/s/AKfycbx1-zodRBIuIhhQPkAioAHMwmYvXcuYCHpOtlamEu2K3h7qUdRXA6z18bk5gC7U2Ma1dw/exec"
+                              action="https://script.google.com/macros/s/AKfycbwWxfAMFwDUfl47kj9WCcixK3_S8yRVaEeXfbRXsb-de_Oh5b2XPxMTqKz-0jIny4JpQg/exec"
                               method="post"
                               class="h-adr"
                         
@@ -480,7 +489,7 @@ method="post"
                         <span class="p-country-name" style="display: none">Japan</span>
                         <h3 class="question">①イベントで使用する参加名(ニックネーム)を入力してください</h3>
                         
-                        <input type="text" name="name" id="name" />
+                        <input type="text" name="name" id="name" required />
                         
                         <h4>
                           本名でなくて大丈夫です👌<br />
@@ -488,12 +497,12 @@ method="post"
                         </h4>
                         
                         <h3 class="question">②性別を教えてください</h3>
-                        <label><input type="radio" name="sex" value="men" />男性</label>
+                        <label><input type="radio" name="sex" value="men" required/>男性</label>
                         <label><input type="radio" name="sex" value="women" />女性</label>
                         <label><input type="radio" name="sex" value="other" />その他</label>
                         
                         <h3 class="question">③年齢を教えてください</h3>
-                        <label><input type="radio" name="age" value="0~19" />〜19歳</label>
+                        <label><input type="radio" name="age" value="0~19" required />〜19歳</label>
                         <label><input type="radio" name="age" value="20~29" />20歳代</label>
                         <label><input type="radio" name="age" value="30~39" />30歳代</label><br>
                         <label><input type="radio" name="age" value="40~49" />40歳代</label>
@@ -501,7 +510,7 @@ method="post"
                         <label><input type="radio" name="age" value="60~" />60歳〜</label>
                         
                         <h3 class="question">④職業を教えてください</h3>
-                        <label><input type="radio" name="occupation" value="1" />小学生 </label>
+                        <label><input type="radio" name="occupation" value="1" required />小学生 </label>
                         <label><input type="radio" name="occupation" value="2" />中学生 </label>
                         <label><input type="radio" name="occupation" value="3" />高校生 </label>
                         <label><input type="radio" name="occupation" value="4" />大学生 </label
@@ -541,9 +550,12 @@ method="post"
                         <input type="hidden" name="ageList" id="ageList" />
                         <input type="hidden" name="occupationList" id="occupationList" />
 
+
+                           <h3 class="question">⑤スタンプカードの背景画像を選択してください！</h3>
+                          <h4>いつでも《マイページ》→ 画面上部《スタンプカード》<br>からいつでも変更できます！！</h4>
                             <div class="radio-group">
         <div class="radio-area">
-            <input type="radio" name="backImg" value="1">
+            <input type="radio" name="backImg" value="1" required>
             <img class="backImg" src="./背景1.png" class="radio">
         
         </div>
