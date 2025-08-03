@@ -242,12 +242,45 @@ function disableButton(form) {
    
     <p>スキャン結果: <span id="result"></span></p>
       
+      <script>
+      function getDistance(lat1, lon1, lat2, lon2) {
+        const R = 6371; // 地球の半径 (km)
+        const dLat = ((lat2 - lat1) * Math.PI) / 180;
+        const dLon = ((lon2 - lon1) * Math.PI) / 180;
+        const a =
+          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos((lat1 * Math.PI) / 180) *
+            Math.cos((lat2 * Math.PI) / 180) *
+            Math.sin(dLon / 2) *
+            Math.sin(dLon / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c; // 距離 (km)
+      }
 
+      let storeData = [];
+
+      function sortByDistance() {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const userLat = position.coords.latitude;
+            const userLon = position.coords.longitude;
+
+            console.log(userLat);
+            console.log(userLon);
+          },
+          (error) => {
+            console.error("位置情報の取得に失敗しました:", error);
+          }
+        );
+      }
+    </script>
+      
    <script>
   
 
         // ✅ QRコードスキャン処理
         document.getElementById("scanQR").addEventListener("click", () => {
+          sortByDistance();
           if (!liff.isInClient()) {
             alert("LINEアプリ内で開いてください");
             return;
@@ -268,6 +301,16 @@ function disableButton(form) {
               spotIdField.type = "hidden";
               spotIdField.name = "spotId";
               spotIdField.value = spotId;
+              form.appendChild(spotIdField);
+
+              spotIdField.type = "hidden";
+              spotIdField.name = "userLat";
+              spotIdField.value = userLat;
+              form.appendChild(spotIdField);
+
+              spotIdField.type = "hidden";
+              spotIdField.name = "userLon";
+              spotIdField.value = userLon;
               form.appendChild(spotIdField);
 
               document.getElementById("button3").click();
@@ -294,7 +337,7 @@ function disableButton(form) {
 
 <form 
 id="userForm3"
-action="https://script.google.com/macros/s/AKfycbxNtgxb2UYavOKKllEkQWmSznk-okhQFj53z7FN_9cpAlcIosvNvtGzCWm_SXQCh-Ko/exec"
+action="https://script.google.com/macros/s/AKfycbzgtlptTjCQxYL4SoV_TyF3mTvHel7DYeohSP0bwRGatK4-XFol-9xDpBlvhd7uZa9N/exec"
 method="post"
 >
 <button id="button3" class="button3" type="submit">ログインされていません</button>
