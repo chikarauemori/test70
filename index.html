@@ -259,33 +259,27 @@ function disableButton(form) {
 
       let storeData = [];
 
-      function sortByDistance() {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const userLat = position.coords.latitude;
-            const userLon = position.coords.longitude;
-
-            console.log(userLat);
-            console.log(userLon);
-          },
-          (error) => {
-            console.error("位置情報の取得に失敗しました:", error);
-          }
-        );
-      }
+      
     </script>
       
    <script>
+
+     let userLat = null;
+     let userLon = null;
   
 
         // ✅ QRコードスキャン処理
         document.getElementById("scanQR").addEventListener("click", () => {
-          sortByDistance();
+          
           if (!liff.isInClient()) {
             alert("LINEアプリ内で開いてください");
             return;
           }
-
+          navigator.geolocation.getCurrentPosition(
+          (position) => {
+          userLat = position.coords.latitude;
+          userLon = position.coords.longitude
+      
           liff.scanCodeV2().then((result) => {
             const qrCodeData = result.value;
             
@@ -303,15 +297,17 @@ function disableButton(form) {
               spotIdField.value = spotId;
               form.appendChild(spotIdField);
 
-              spotIdField.type = "hidden";
-              spotIdField.name = "userLat";
-              spotIdField.value = userLat;
-              form.appendChild(spotIdField);
+              const userLatField = document.createElement("input");
+              userLatField.type = "hidden";
+              userLatField.name = "userLat";
+              userLatField.value = userLat;
+              form.appendChild(userLatField);
 
-              spotIdField.type = "hidden";
-              spotIdField.name = "userLon";
-              spotIdField.value = userLon;
-              form.appendChild(spotIdField);
+              const userLonField = document.createElement("input");
+              userLonField.type = "hidden";
+              userLonField.name = "userLon";
+              userLonField.value = userLon;
+              form.appendChild(userLonField);
 
               document.getElementById("button3").click();
               
