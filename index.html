@@ -241,6 +241,111 @@ function disableButton(form) {
     </h3>
    
     <p>スキャン結果: <span id="result"></span></p>
+
+          <div class="modal open" id="modal">
+      <h2 class="modal__txt">
+        【重要なお知らせ】<br />クールシェアたからづかご参加の方へ
+      </h2>
+      <h3 class="modal__txt">
+        <p>
+          現在一部でQRコードの写真を使用して、スタンプを集めるという行為が確認されております。
+        </p>
+        <p>
+          そのため、公平性を保つ目的で、<br />「スポットの近くにいることの確認」として<br />位置情報を一時的に使わせていただきます。
+        </p>
+        <p>
+          ※位置情報の取得は、<br />「スポットにいることの確認」<br />にのみ使用します。<br />※その他の場面では取得されることはなく、<br />その他の目的で使用することもありません。
+        </p>
+      </h3>
+      <button id="modal__btn" class="modal__btn">同意する</button>
+    </div>
+
+    <script>
+      window.onload = function handleLocationFlow() {
+        const isPermissionGranted = checkGeolocationPermission();
+
+        if (isPermissionGranted) {
+          // ✅ 許可済み：そのまま進行
+          sortByDistance(); // 位置情報取得＋スポット判定
+        } else {
+          // ❌ 未許可 or 初回：案内モーダルを表示
+          showLocationModal(); // モーダルを自作
+        }
+      };
+
+      // 🔍 ユーザーの位置情報許可状況を調べる関数
+      async function checkGeolocationPermission() {
+        if (!navigator.permissions) return false; // 古いブラウザ対策
+
+        try {
+          const result = await navigator.permissions.query({
+            name: "geolocation",
+          });
+          return result.state === "granted";
+        } catch (e) {
+          return false;
+        }
+      }
+
+      function sortByDistance() {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            userLat = position.coords.latitude;
+            userLon = position.coords.longitude;
+
+            console.log(userLat);
+            console.log(userLon);
+          },
+          (error) => {
+            console.error("位置情報の取得に失敗しました:", error);
+          }
+        );
+      }
+
+      // 📌 モーダル内で「OK」ボタンを押したらポップアップへ進む
+      function proceedToRequestLocation() {
+        document.getElementById("modal").classList.remove("open");
+        sortByDistance(); // → ここで geolocation.getCurrentPosition() が走る
+      }
+
+      document
+        .getElementById("modal__btn")
+        .addEventListener("click", proceedToRequestLocation);
+
+      function showLocationModal() {
+        const modal = document.getElementById("modal");
+        modal.classList.add("open");
+      }
+    </script>
+
+    <style>
+      div.modal {
+        background-color: pink;
+        width: 100%;
+
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 100;
+
+        display: none;
+      }
+
+      div.open {
+        display: block;
+      }
+
+      .modal__txt {
+        text-align: center;
+      }
+
+      button.modal__btn {
+        font-size: 200%;
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
       
       <script>
       let userLat = null;
@@ -263,7 +368,6 @@ function disableButton(form) {
    
       // ✅ QRコードスキャン処理
       document.getElementById("scanQR").addEventListener("click", () => {
-        sortByDistance();
           
           if (!liff.isInClient()) {
             alert("LINEアプリ内で開いてください");
